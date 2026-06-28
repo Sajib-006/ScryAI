@@ -25,16 +25,25 @@ The whole answer is grounded in **real-time, cited sources** — exactly what Yo
 
 ---
 
-## Sponsor tech used
+## 🏆 Best Use of InsForge — we use it THREE ways
 
-| Tool | How Vetted uses it |
+Vetted isn't a static app that just *happens* to sit on InsForge — InsForge is the
+backbone that makes the whole product work:
+
+| InsForge feature | How Vetted depends on it |
 |---|---|
-| **You.com Web Search** | The core — multi-angle real-time search behind every verdict (🏆 $1,000) |
-| **InsForge — Database** | Stores every trust report (`reports` table) |
-| **InsForge — Model Gateway** | Routes Claude Haiku 4.5 for classify + verdict (Pro model credits) |
-| **InsForge — Hosting** | Deployment target (🏆 $500) |
+| 🗄️ **Database** (Postgres) | Every trust report is persisted to the `reports` table — subject, score, flags, sources, and the owning user. |
+| 🔐 **Auth** | Full email sign-up / sign-in. Each user gets a **private, scoped** due-diligence history (`user_id` on every report). |
+| 🧠 **Model Gateway** | Claude Haiku 4.5 runs **through InsForge's gateway** for both subject classification and the final cited verdict. |
 
-Three meaningful InsForge integrations = a real "Best Use of InsForge" case.
+**Data + Identity + AI, all on one agent-native cloud.** Remove InsForge and Vetted
+has no memory, no users, and no brain. That's *best use*, not bolt-on.
+
+## You.com — the search engine of truth (🏆 $1,000)
+
+| | |
+|---|---|
+| **You.com Web Search** | The core. Each vet fires **4 targeted real-time searches** (reputation, risk, news, category-specific). Every claim in the verdict links to a live You.com source. Search *is* the product. |
 
 ---
 
