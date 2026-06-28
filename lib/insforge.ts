@@ -14,6 +14,8 @@ export type StoredReport = {
   summary: string;
   flags: any[];
   sources: { title: string; url: string }[];
+  userId?: string | null;
+  userEmail?: string | null;
   createdAt: string;
 };
 
@@ -54,6 +56,8 @@ export async function saveReport(
           summary: record.summary,
           flags: record.flags, // jsonb
           sources: record.sources, // jsonb
+          user_id: record.userId ?? null,
+          user_email: record.userEmail ?? null,
         })
         .select();
       if (error) throw error;
@@ -66,13 +70,16 @@ export async function saveReport(
   return record;
 }
 
-export async function getHistory(limit = 20): Promise<StoredReport[]> {
+export async function getHistory(userId?: string | null, limit = 20): Promise<StoredReport[]> {
   if (insforgeLive()) {
     try {
       const insforge = await client();
-      const { data, error } = await insforge.database
+      let q = insforge.database
         .from("reports")
-        .select("id, subject, category, trust_score, label, summary, flags, sources, created_at");
+        .select("id, subject, category, trust_score, label, summary, flags, sources, user_id, user_email, created_at");
+      // Scope to the signed-in user when we know who they are.
+      if (userId) q = q.eq("user_id", userId);
+      const { data, error } = await q;
       if (error) throw error;
       if (data) {
         return (data as any[])
@@ -85,6 +92,8 @@ export async function getHistory(limit = 20): Promise<StoredReport[]> {
             summary: r.summary,
             flags: r.flags ?? [],
             sources: r.sources ?? [],
+            userId: r.user_id ?? null,
+            userEmail: r.user_email ?? null,
             createdAt: r.created_at ?? "",
           }))
           .sort((a, b) => (a.createdAt < b.createdAt ? 1 : -1))
@@ -94,5 +103,6 @@ export async function getHistory(limit = 20): Promise<StoredReport[]> {
       console.error("InsForge getHistory failed:", e);
     }
   }
-  return memory.slice(0, limit);
+  const mem = userId ? memory.filter((m) => m.userId === userId) : memory;
+  return mem.slice(0, limit);
 }

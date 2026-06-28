@@ -47,7 +47,23 @@ html, body {
   .sidebar { width: 100%; position: static; padding-top: 0; }
 }
 
+.topbar { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
 .brand { display: flex; align-items: center; gap: 12px; margin-bottom: 6px; }
+
+/* ── Auth ── */
+.authbar { position: relative; padding-top: 4px; }
+.auth-btn { background: linear-gradient(135deg, var(--accent), #5b8df0); color: #fff; border: none; border-radius: 9px; padding: 8px 14px; font-size: 13px; font-weight: 600; cursor: pointer; }
+.auth-btn.ghost { background: var(--panel-2); border: 1px solid var(--border); color: var(--muted); }
+.auth-btn:disabled { opacity: .5; }
+.user-chip { font-size: 13px; color: var(--text); margin-right: 8px; }
+.auth-pop { position: absolute; right: 0; top: 40px; z-index: 10; width: 240px; background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 14px; display: flex; flex-direction: column; gap: 8px; box-shadow: 0 12px 40px rgba(0,0,0,.5); }
+.auth-tabs { display: flex; gap: 6px; margin-bottom: 4px; }
+.auth-tabs button { flex: 1; background: var(--panel-2); border: 1px solid var(--border); color: var(--muted); border-radius: 8px; padding: 6px; font-size: 13px; cursor: pointer; }
+.auth-tabs button.on { background: rgba(124,108,240,.18); color: var(--text); border-color: var(--accent); }
+.auth-pop input { background: var(--panel-2); border: 1px solid var(--border); border-radius: 8px; padding: 9px 11px; color: var(--text); font-size: 14px; outline: none; }
+.auth-err { color: var(--red); font-size: 12px; }
+.auth-actions { display: flex; gap: 6px; margin-top: 2px; }
+.auth-actions .auth-btn { flex: 1; }
 .brand .logo { font-size: 32px; }
 .brand h1 { font-size: 28px; margin: 0; letter-spacing: -0.5px; }
 .tagline { color: var(--muted); margin: 0 0 26px; font-size: 15px; line-height: 1.6; }
@@ -77,6 +93,18 @@ html, body {
 .examples button:hover { color: var(--text); border-color: var(--accent); }
 
 .loading { color: var(--muted); margin-top: 24px; font-size: 15px; }
+
+/* ── Search trace (You.com usage made visible) ── */
+.search-trace { margin-top: 26px; background: var(--panel); border: 1px solid var(--border); border-radius: 14px; padding: 18px 20px; display: flex; flex-direction: column; gap: 11px; }
+.trace-step { display: flex; align-items: center; gap: 11px; font-size: 14px; transition: all .3s; }
+.trace-step .trace-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+.trace-step.pending { color: var(--muted); opacity: .45; }
+.trace-step.pending .trace-dot { background: var(--border); }
+.trace-step.active { color: var(--text); }
+.trace-step.active .trace-dot { background: var(--accent); box-shadow: 0 0 0 4px rgba(124,108,240,.2); animation: pulse 1s infinite; }
+.trace-step.done { color: var(--cite); }
+.trace-step.done .trace-dot { background: var(--cite); }
+@keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: .4; } }
 .error { color: var(--red); margin-top: 18px; }
 
 /* ── Verdict card ── */

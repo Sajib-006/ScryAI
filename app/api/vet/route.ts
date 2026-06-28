@@ -12,7 +12,7 @@ export const runtime = "nodejs";
 
 export async function POST(req: NextRequest) {
   try {
-    const { input } = await req.json();
+    const { input, userId, userEmail } = await req.json();
     if (!input || typeof input !== "string") {
       return NextResponse.json({ error: "Missing 'input'." }, { status: 400 });
     }
@@ -28,6 +28,8 @@ export async function POST(req: NextRequest) {
       summary: verdict.summary,
       flags: verdict.flags,
       sources: evidence.hits.map((h) => ({ title: h.title, url: h.url })),
+      userId: userId ?? null,
+      userEmail: userEmail ?? null,
     });
 
     return NextResponse.json({
