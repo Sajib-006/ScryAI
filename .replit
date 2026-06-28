@@ -1,0 +1,12 @@
+run = "npm install && npm run dev"
+entrypoint = "app/page.tsx"
+
+[nix]
+channel = "stable-24_05"
+
+[env]
+NODE_ENV = "development"
+
+[[ports]]
+localPort = 3000
+externalPort = 80
