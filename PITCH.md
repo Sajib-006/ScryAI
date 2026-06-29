@@ -54,4 +54,5 @@ Next.js 14 · You.com Web Search API · InsForge (Postgres + Auth + Model Gatewa
 
 ## Links
 - Repo: https://github.com/Sajib-006/ScryAI
-- Live demo: _(paste Replit URL here)_
+- Demo video: https://www.youtube.com/watch?v=WRVhxvK4czs
+- Live demo: https://31a702b6-5b55-458f-8c81-fef92aa5e3ef-00-2gup0090zek4g.worf.replit.dev/

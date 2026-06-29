@@ -8,7 +8,7 @@
 
 Real-time **You.com** search · **InsForge** Database + Auth + Model Gateway · Claude reasoning
 
-[Live Demo](https://31a702b6-5b55-458f-8c81-fef92aa5e3ef-00-2gup0090zek4g.worf.replit.dev/) · Built at Wizard Hackathon 🧙‍♂️ · Track: 🧪 Potion Lab
+[🎥 Demo Video](https://www.youtube.com/watch?v=WRVhxvK4czs) · [Live Demo](https://31a702b6-5b55-458f-8c81-fef92aa5e3ef-00-2gup0090zek4g.worf.replit.dev/) · Built at Wizard Hackathon 🧙‍♂️ · Track: 🧪 Potion Lab
 
 </div>
 
